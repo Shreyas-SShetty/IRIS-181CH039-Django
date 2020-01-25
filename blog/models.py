@@ -11,6 +11,7 @@ class Post(models.Model):
     age = models.CharField(max_length=200)
     cost = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
+    phone = models.CharField(max_length=200)
     #created_date = models.DateTimeField(default=timezone.now)
     #published_date = models.DateTimeField(blank=True, null=True)
 
