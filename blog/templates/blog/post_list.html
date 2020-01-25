@@ -6,6 +6,7 @@
             {{ post.created_date }}
             </div>
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.name }}</a></h2>
+            <p>{{ post.seller }}</p>
             <p>{{ post.phone }}</p>
         </div>
    {% endfor %}
