@@ -1,21 +1,22 @@
 {% extends 'blog/base.html' %}
-
-{% block content %}
-    <div class="post">
-        {% if post.created_date %}
-            <div class="date">
-                {{ post.created_date }}
-            </div>
-        {% endif %}
-        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-        <p>NAME - {{ post.name }}</p>
-        <!--{% if post.image %} -->
-        <p>{{ post.image.url }}</p>
-        <!--{% endif %} -->
-        <p>DESCRIPTION - {{ post.description|linebreaksbr }}</p>
-        <p>AGE - {{ post.age }}</p>
-        <p>COST - {{ post.cost }}</p>
-        <p>ADDRESS - {{ post.address }}</p>
-    </div>
-{% endblock %}
+    {% block content %}
+        <div class="post">
+            {% if post.created_date %}
+                <div class="date">
+                    {{ post.created_date }}
+                </div>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+            {% endif %}
+            <p>NAME - {{ post.name }}</p>
+            <p>DESCRIPTION - {{ post.description|linebreaksbr }}</p>
+            <p>AGE - {{ post.age }}</p>
+            <p>COST - {{ post.cost }}</p>
+            <p>ADDRESS - {{ post.address }}</p>
+            <p>Do you want to purchase this item?</p>
+            <a class="btn btn-default" href="{% url 'post_update' %}"><button type="submit">Yes</button></span></a>
+            <a class="btn btn-default" href="{% url 'post_list' %}"><button type="submit">No</button></span></a>
+        </div>
+    {% endblock %}

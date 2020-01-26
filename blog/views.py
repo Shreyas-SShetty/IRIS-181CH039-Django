@@ -54,3 +54,11 @@ def post_remove(request, pk) :
     post = get_object_or_404(Post, pk=pk)
     post.delete()
     return redirect('post_list')
+
+
+def post_open(request) :
+    return render(request, 'blog/post_open.html', {})
+
+
+def post_update(request) :
+    return render(request, 'blog/post_update.html', {})

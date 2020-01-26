@@ -5,9 +5,14 @@
             <div class="date">
             {{ post.created_date }}
             </div>
+            {% if post.wallet >= post.cost %}
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.name }}</a></h2>
+            {% else %}
+            <h2><a href="{% url 'post_open' %}">{{ post.name }}</a></h2>
+            {% endif %}
             <p>{{ post.seller }}</p>
             <p>{{ post.phone }}</p>
+            <p>{{ post.wallet }}</p>
         </div>
    {% endfor %}
 {% endblock %}
