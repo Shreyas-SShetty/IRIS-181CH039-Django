@@ -8,8 +8,11 @@
             </div>
         {% endif %}
         <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
         <p>NAME - {{ post.name }}</p>
-        <p>IMAGE - {{ post.image }}</p>
+        <!--{% if post.image %} -->
+        <p>{{ post.image.url }}</p>
+        <!--{% endif %} -->
         <p>DESCRIPTION - {{ post.description|linebreaksbr }}</p>
         <p>AGE - {{ post.age }}</p>
         <p>COST - {{ post.cost }}</p>

@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 <body>
-    <div>
-        <!--<h1><a href="/">Buy/Sell for NITK</a></h1>-->
-        <div class="page-header">
+    <div class="page-header">
+        {% if user.is_authenticated %}
             <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            <h1><a href="/">Buy/Sell for NITK</a></h1>
-        </div>
+        {% else %}
+            <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+        {% endif %}
+        <h1><a href="/">Django Girls Blog</a></h1>
     </div>
 
     <div class="content container">
