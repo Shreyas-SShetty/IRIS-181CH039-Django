@@ -10,4 +10,3 @@ urlpatterns = [
     path('drafter/', views.post_open, name='post_open'),
     path('update/', views.post_update, name='post_update'),
 ]
-

@@ -1,6 +1,9 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 
 class Post(models.Model):
@@ -9,7 +12,9 @@ class Post(models.Model):
     seller = models.CharField(max_length=200)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
     description = models.TextField()
-    age = models.IntegerField(default=0)
+    years = models.IntegerField(default=0)
+    months = models.IntegerField(default=0)
+    days = models.IntegerField(default=0)
     cost = models.IntegerField(default=0)
     address = models.CharField(max_length=200)
     phone = models.IntegerField(default=0)

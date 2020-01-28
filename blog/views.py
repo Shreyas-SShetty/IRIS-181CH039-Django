@@ -1,13 +1,22 @@
-from django.shortcuts import render
 from .models import Post
-from django.shortcuts import render, get_object_or_404
-from .forms import PostForm
-from django.shortcuts import redirect
-from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from django.core.files.storage import FileSystemStorage
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
+from django.views.generic import DetailView, ListView
+from django.views.generic.edit import UpdateView
+from django.shortcuts import render
+from django.utils import timezone
+from django import forms
+from .forms import PostForm
+from .models import Post
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
 
 
 # Create your views here.
+
 def post_list(request) :
     posts = Post.objects.order_by('cost')
     return render(request, 'blog/post_list.html', {'posts' : posts})
@@ -56,9 +65,15 @@ def post_remove(request, pk) :
     return redirect('post_list')
 
 
+@login_required
 def post_open(request) :
     return render(request, 'blog/post_open.html', {})
 
 
+@login_required
 def post_update(request) :
     return render(request, 'blog/post_update.html', {})
+
+
+
+
