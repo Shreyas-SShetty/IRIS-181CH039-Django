@@ -18,8 +18,10 @@
             <p>AGE ON UPLOADED DATE- {{ post.years }} years, {{ post.months }} months, {{ post.days }} days </p>
             <p>COST - {{ post.cost }}</p>
             <p>ADDRESS - {{ post.address }}</p>
+            <p> {{post.author }}</p>
+            <p> {{ user.username }}</p>
             <p>Do you want to purchase this item?</p>
-            <a class="btn btn-default" href="{% url 'post_update' %}"><button type="submit">Yes</button></a>
+            <a class="btn btn-default" href="{% url 'post_update' pk=post.pk %}"><button type="submit">Yes</button></a>
             <a class="btn btn-default" href="{% url 'post_list' %}"><button type="submit">No</button></a>
         </div>
     {% endblock %}

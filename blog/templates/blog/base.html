@@ -13,7 +13,8 @@
             <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
             <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
         {% else %}
-            <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+        <p class="top-menu">Login<a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a></p>
+        <p class="top-menu">Register<a href="{% url 'register' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a></p>
         {% endif %}
         <h1><a href="/">Buy/Sell for NITK</a></h1>
     </div>
