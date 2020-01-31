@@ -13,8 +13,8 @@
             {% endif %}
             
             <!-- If user is logged in , allow him to edit or delete the post -->
-            <!-- Requests : post_edit (urls.py)-->
-            <!-- Requests : post_remove (urls.py)-->
+            <!-- Requests : POST-->
+            <!-- Requests : POST-->
             
             {% if user.is_authenticated %}
             <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
@@ -25,7 +25,7 @@
             
             <!-- Image is uploaded to the images folder in MEDIA directory -->
             <!-- image = models.ImageField(upload_to='images/', null=True, blank=True) -->\
-            <!-- Request : URL -->
+            <!-- Request : GET -->
             
             <p>IMAGE - <img src="{{ post.image.url }}" ></p>
             <p>UPLOADED_DATE - {{ post.created_date }}</p>
@@ -36,11 +36,11 @@
             <p>Do you want to purchase this item?</p>
             
             <!-- Subtract amount from Buyer and add it to Seller if Yes -->
-            <!-- Request : post_update (urls.py) -->
+            <!-- Request : POST) -->
             <a class="btn btn-default" href="{% url 'post_update' pk=post.pk %}"><button type="submit">Yes</button></a>
             
             <!-- Return to home-page if no -->
-            <!-- Request : post_list (urls.py)-->
+            <!-- Request : POST-->
             <a class="btn btn-default" href="{% url 'post_list' %}"><button type="submit">No</button></a>
             
         </div>
