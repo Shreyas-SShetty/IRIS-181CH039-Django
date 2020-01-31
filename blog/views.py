@@ -10,7 +10,7 @@ from django.views.generic.edit import UpdateView
 from django.shortcuts import render
 from django.utils import timezone
 from django import forms
-from .forms import PostForm, UserProfileForm
+from .forms import PostForm
 from .models import Post
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -83,17 +83,12 @@ def post_update(request, pk) :
 def register(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
-        profile_form = UserProfileForm(request.POST)
-        if form.is_valid() and profile_form.is_valid():
+        if form.is_valid() :
             user = form.save()
-            profile = profile_form.save(commit=False)
-            profile.user = user
-            profile.save()
             return redirect('post_list')
     else:
         form = UserCreationForm()
-        profile_form = UserProfileForm()
-        args = {'form': form, 'profile_form': profile_form}
+        args = {'form': form}
         return render(request, 'blog/register.html', args)
 
 
