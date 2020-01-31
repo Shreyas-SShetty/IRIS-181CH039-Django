@@ -1,18 +1,33 @@
+<!-- MAIN PAGE OF THE WEBAPP -->
 {% extends 'blog/base.html' %}
 {% block content %}
+
+<!-- running a for loop through all the posts -->
+<!-- posts = Post.objects.order_by('cost') -->
+
    {% for post in posts %}
         <div class="post">
+           
             <div class="date">
             {{ post.created_date }}
             </div>
+           
             {% if post.wallet >= post.cost %}
+            <!-- get the details of the product -->
+            <!-- Request=post_detail -->
+            <!-- pk refers to the primary key for a particular post which is unique for that post -->
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.name }}</a></h2>
+           
             {% else %}
+            <!-- display an Error page for insufficient balance -->
+            <!-- Request=post_open -->
             <h2><a href="{% url 'post_open' %}">{{ post.name }}</a></h2>
+
             {% endif %}
+            <!-- Display the name and PhoneNo of the seller-->
             <p>{{ post.seller }}</p>
             <p>{{ post.phone }}</p>
-            <p>{{ post.wallet }}</p>
         </div>
    {% endfor %}
+
 {% endblock %}
