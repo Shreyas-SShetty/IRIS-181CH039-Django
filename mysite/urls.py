@@ -28,7 +28,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/login/', views.LoginView.as_view(), name='login'),
     path('accounts/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
+    # 127.0.0.1:8000/ will be re-directed to blog.urls every time
     path('', include('blog.urls')),
 ]
+# added static to upload images
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
