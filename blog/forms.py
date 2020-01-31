@@ -5,7 +5,6 @@ from .models import Post
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.views.generic import DetailView, ListView
 from django.views.generic.edit import UpdateView
@@ -21,9 +20,3 @@ class PostForm(forms.ModelForm) :
     class Meta :
         model = Post
         fields = ['name', 'image', 'description', 'years', 'months', 'days', 'cost', 'address', 'seller', 'phone', ]
-
-
-class UserProfileForm(forms.ModelForm) :
-    class Meta :
-        model = UserProfile
-        fields = ['wallet', ]
