@@ -6,6 +6,7 @@
     <!-- post here does not refer to the Post model -->
     <form method="post">
         {% csrf_token %}
+        <!-- Importing UserCreationForm from from django.contrib.auth.forms -->
         {{ form.as_p }}
         <button type="submit">Submit</button>
     </form>
