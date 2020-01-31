@@ -4,7 +4,7 @@
 {% block content %}
     <h2>New post</h2>
     <!-- enctype="multipart/form-data" is used because we are uploading the image of the object also -->
-    <!-- Request: Form -->
+    <!-- Request: Form  (forms.py)-->
     <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
