@@ -5,7 +5,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
 
-
 class Post(models.Model) :
     author = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
     name = models.CharField(max_length=200)
